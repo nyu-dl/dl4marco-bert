@@ -5,16 +5,15 @@
 [BERT repository](https://github.com/google-research/bert).**\*\*\*\*\* 
 
 This repository contains the code to reproduce our entry to the [MSMARCO passage
-ranking task](http://www.msmarco.org/leaders.aspx)
-
-The paper describing our implementation is [here]().
-
+ranking task](http://www.msmarco.org/leaders.aspx).
 
 MSMARCO Passage Re-Ranking Leaderboard (Jan 8th 2019) | Eval MRR@10  | Eval MRR@10
 ------------------------------------- | :------: | :------:
 1st Place - BERT (this code)          | **35.87** | **36.53**
 2nd Place - IRNet                     | 28.06     | 27.80
 3rd Place - Conv-KNRM                 | 27.12     | 29.02
+
+The paper describing our implementation is [here]().
 
 ## Download and extract the data
 First, we need to download and extract MS MARCO and BERT files:
@@ -34,8 +33,8 @@ tar -xvf ${DATA_DIR}/top1000.eval.tar.gz -C ${DATA_DIR}
 unzip ${DATA_DIR}/uncased_L-24_H-1024_A-16.zip -d ${DATA_DIR}
 ```
 
-## Convert MS MARCO to tfrecord
-Next, we need to convert MS MARCO train, dev, and eval file to tfrecord files, 
+## Convert MS MARCO to tfrecord format
+Next, we need to convert MS MARCO train, dev, and eval files to tfrecord files, 
 which will be later consumed by BERT.
 
 ```
@@ -53,27 +52,28 @@ python convert_msmarco_to_tfrecord.py \
 ```
 
 This conversion takes 30-40 hours. Alternatively, you can download the
-[tfrecords file here]() (~23GB):
+[tfrecord files here]() (~23GB).
 
 ## Training
-We can now start training. We highly recommend to use a TPU, which are free in
-[Google's colab](https://colab.research.google.com/github/tensorflow/tpu/blob/master/tools/colab/bert_finetuning_with_cloud_tpus.ipynb). Otherwise, a modern V100 GPU with 16GB
-cannot fit even a small batch size of 2 when training a BERT Large model.
+We can now start training. We highly recommend to use TPUs, which are free in
+[Google's colab](https://drive.google.com/open?id=1vaON2QlidC0rwZ8JFrdciWW68PYKb9Iu).
+Otherwise, a modern V100 GPU with 16GB cannot fit even a small batch size of 2
+when training a BERT Large model.
 
+In case you opt for not using the colab, here is the command line for start 
+training:
 ```
-TFRECORD_FOLDER=${DATA_DIR}/tfrecord
-mkdir ${TFRECORD_FOLDER}
 python run.py \
-  --data_dir=${TFRECORD_FOLDER} \
-  --vocab_file=${DATA_DIR}/uncased_L-24_H-1024_A-16/vocab.txt \
+  --data_dir=${DATA_DIR}/tfrecord \
   --bert_config_file=${DATA_DIR}/uncased_L-24_H-1024_A-16/bert_config.json \
   --init_checkpoint=${DATA_DIR}/uncased_L-24_H-1024_A-16/bert_model.ckpt \
   --output_dir=${DATA_DIR}/output \
   --msmarco_output=True \
-  --do_train=True\
-  --do_eval=True\
-  --num_train_steps=400000\
-  --
+  --do_train=True \
+  --do_eval=True \
+  --num_train_steps=400000 \
+  --train_batch_size=32 \
+  --eval_batch_size=32 \
 ```
 
 Training for 400k iterations takes approximately 70 hours on a TPU v2.

@@ -26,11 +26,6 @@ flags.DEFINE_string(
     "query-docids mapping files.")
 
 flags.DEFINE_string(
-    "vocab_file",
-    "./data/bert/pretrained_models/uncased_L-24_H-1024_A-16/vocab.txt",
-    "The vocabulary file that the BERT model was trained on.")
-
-flags.DEFINE_string(
     "bert_config_file",
     "./data/bert/pretrained_models/uncased_L-24_H-1024_A-16/bert_config.json",
     "The config json file corresponding to the pre-trained BERT model. "
@@ -48,11 +43,6 @@ flags.DEFINE_string(
     "init_checkpoint",
     "./data/bert/pretrained_models/uncased_L-24_H-1024_A-16/bert_model.ckpt",
     "Initial checkpoint (usually from a pre-trained BERT model).")
-
-flags.DEFINE_bool(
-    "do_lower_case", True,
-    "Whether to lower case the input text. Should be True for uncased "
-    "models and False for cased models.")
 
 flags.DEFINE_integer(
     "max_seq_length", 512,
@@ -338,17 +328,13 @@ def main(_):
           num_shards=FLAGS.num_tpu_cores,
           per_host_input_for_training=is_per_host))
 
-  num_warmup_steps = None
-  if FLAGS.do_train:
-    num_warmup_steps = FLAGS.num_warmup_steps
-
   model_fn = model_fn_builder(
       bert_config=bert_config,
       num_labels=2,
       init_checkpoint=FLAGS.init_checkpoint,
       learning_rate=FLAGS.learning_rate,
       num_train_steps=FLAGS.num_train_steps,
-      num_warmup_steps=num_warmup_steps,
+      num_warmup_steps=FLAGS.num_warmup_steps,
       use_tpu=FLAGS.use_tpu,
       use_one_hot_embeddings=FLAGS.use_tpu)
 
@@ -408,8 +394,7 @@ def main(_):
       example_idx = 0
       total_count = 0
       for item in result:
-        results.append(
-            (item["logits"], item["label_ids"]))
+        results.append((item["logits"], item["label_ids"]))
         if total_count % 10000 == 0:
           tf.logging.info("Read {} examples in {} secs".format(
               total_count, int(time.time() - start_time)))

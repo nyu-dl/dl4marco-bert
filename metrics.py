@@ -28,8 +28,8 @@ def average_precision(gt, pred):
   num_hits = 0.0
   for i,p in enumerate(pred):
     if p in gt and p not in pred[:i]:
-    num_hits += 1.0
-    score += num_hits / (i + 1.0)
+      num_hits += 1.0
+      score += num_hits / (i + 1.0)
 
   return score / max(1.0, len(gt))
 
