@@ -5,7 +5,8 @@
 [BERT repository](https://github.com/google-research/bert).**\*\*\*\*\* 
 
 This repository contains the code to reproduce our entry to the [MSMARCO passage
-ranking task](http://www.msmarco.org/leaders.aspx).
+ranking task](http://www.msmarco.org/leaders.aspx), which was placed first with
+a large margin over the second place.
 
 MSMARCO Passage Re-Ranking Leaderboard (Jan 8th 2019) | Eval MRR@10  | Eval MRR@10
 ------------------------------------- | :------: | :------:
@@ -13,7 +14,7 @@ MSMARCO Passage Re-Ranking Leaderboard (Jan 8th 2019) | Eval MRR@10  | Eval MRR@
 2nd Place - IRNet                     | 28.06     | 27.80
 3rd Place - Conv-KNRM                 | 27.12     | 29.02
 
-The paper describing our implementation is [here]().
+The paper describing our implementation is [here]() (AVAILABLE SOON).
 
 ## Download and extract the data
 First, we need to download and extract MS MARCO and BERT files:
@@ -52,7 +53,7 @@ python convert_msmarco_to_tfrecord.py \
 ```
 
 This conversion takes 30-40 hours. Alternatively, you can download the
-[tfrecord files here]() (~23GB).
+[tfrecord files here]() (~23GB) (AVAILABLE SOON).
 
 ## Training
 We can now start training. We highly recommend to use TPUs, which are free in
