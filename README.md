@@ -1,4 +1,4 @@
-# BERT as Passage-Reranker
+# Passage Re-ranking with BERT
 
 ## Introduction
 **\*\*\*\*\* Most of the code in this repository was copied from the original 
@@ -14,7 +14,7 @@ MSMARCO Passage Re-Ranking Leaderboard (Jan 8th 2019) | Eval MRR@10  | Eval MRR@
 2nd Place - IRNet                     | 28.06     | 27.80
 3rd Place - Conv-KNRM                 | 27.12     | 29.02
 
-The paper describing our implementation is [here]() (AVAILABLE SOON).
+The paper describing our implementation is [here](https://drive.google.com/open?id=1mhYyIAd051Lg2UCUCMIKerN5e3pZOf-v).
 
 ## Download and extract the data
 First, we need to download and extract MS MARCO and BERT files:
