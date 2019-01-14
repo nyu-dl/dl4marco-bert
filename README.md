@@ -56,12 +56,12 @@ This conversion takes 30-40 hours. Alternatively, you can download the
 [tfrecord files here](https://storage.googleapis.com/bert_msmarco_data/tfrecord/msmarco_tfrecord.tar.gz) (~23GB).
 
 ## Training
-We can now start training. We highly recommend to use TPUs, which are free in
-[Google's colab](https://drive.google.com/open?id=1vaON2QlidC0rwZ8JFrdciWW68PYKb9Iu).
+We can now start training. We highly recommend using TPUs, which are free in
+[Google's Colab](https://drive.google.com/open?id=1vaON2QlidC0rwZ8JFrdciWW68PYKb9Iu).
 Otherwise, a modern V100 GPU with 16GB cannot fit even a small batch size of 2
 when training a BERT Large model.
 
-In case you opt for not using the colab, here is the command line for start 
+In case you opt for not using the Colab, here is the command line to start 
 training:
 ```
 python run.py \
@@ -79,6 +79,10 @@ python run.py \
 
 Training for 400k iterations takes approximately 70 hours on a TPU v2.
 Alternatively, you can [download the trained model used in our submission here](https://storage.googleapis.com/bert_msmarco_data/pretrained_models/trained_bert_large.zip) (~3.4GB).
+
+## TREC-CAR
+You can download our [BERT Large trained on TREC-CAR here](https://drive.google.com/open?id=1fzcL2nzUJMUd0w4J5JIeASSrN4uHlSqP).
+We also made available a [BERT Large model pretrained on the training set of TREC-CAR](https://drive.google.com/open?id=1Ovc8DPtgQ411bUo-_UDSDVqpPsoWXvmG). This pretraining was necessary because the [official pre-trained BERT models](https://github.com/google-research/bert) were pre-trained on the full Wikipedia, and therefore they have seen, although in an unsupervised way, Wikipedia documents that are used in the test set of TREC-CAR. Thus, to avoid this leak of test data into training, we pre-trained the BERT re-ranker only on the half of Wikipedia used by TREC-CAR’s training set.
 
 #### How do I cite this work?
 ```
