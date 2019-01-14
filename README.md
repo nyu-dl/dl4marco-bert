@@ -53,7 +53,7 @@ python convert_msmarco_to_tfrecord.py \
 ```
 
 This conversion takes 30-40 hours. Alternatively, you can download the
-[tfrecord files here](https://storage.googleapis.com/bert_msmarco_data/tfrecord/msmarco_tfrecord.tar.gz) (~23GB).
+[tfrecord files here](https://drive.google.com/open?id=1crlASTMlsihALlkabAQP6JTYIZwC1Wm8) (~23GB).
 
 ## Training
 We can now start training. We highly recommend using TPUs, which are free in
