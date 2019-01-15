@@ -14,7 +14,7 @@ MSMARCO Passage Re-Ranking Leaderboard (Jan 8th 2019) | Eval MRR@10  | Eval MRR@
 2nd Place - IRNet                     | 28.06     | 27.80
 3rd Place - Conv-KNRM                 | 27.12     | 29.02
 
-The paper describing our implementation is [here](https://drive.google.com/open?id=1mhYyIAd051Lg2UCUCMIKerN5e3pZOf-v).
+The paper describing our implementation is [here](https://arxiv.org/abs/1901.04085).
 
 ## Download and extract the data
 First, we need to download and extract MS MARCO and BERT files:
@@ -89,7 +89,7 @@ We also made available a [BERT Large model pretrained on the training set of TRE
 @article{nogueira2019passage,
   title={Passage Re-ranking with BERT},
   author={Nogueira, Rodrigo and Cho, Kyunghyun},
-  journal={arXiv preprint},
+  journal={arXiv preprint arXiv:1901.04085},
   year={2019}
 }
 ```
