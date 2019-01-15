@@ -53,7 +53,7 @@ python convert_msmarco_to_tfrecord.py \
 ```
 
 This conversion takes 30-40 hours. Alternatively, you can download the
-[tfrecord files here](https://drive.google.com/open?id=1crlASTMlsihALlkabAQP6JTYIZwC1Wm8) (~23GB).
+[tfrecord files here](https://drive.google.com/open?id=1IHFMLOMf2WqeQ0TuZx_j3_sf1Z0fc2-6) (~23GB).
 
 ## Training
 We can now start training. We highly recommend using TPUs, which are free in
@@ -78,7 +78,7 @@ python run.py \
 ```
 
 Training for 400k iterations takes approximately 70 hours on a TPU v2.
-Alternatively, you can [download the trained model used in our submission here](https://storage.googleapis.com/bert_msmarco_data/pretrained_models/trained_bert_large.zip) (~3.4GB).
+Alternatively, you can [download the trained model used in our submission here](https://drive.google.com/open?id=1crlASTMlsihALlkabAQP6JTYIZwC1Wm8) (~3.4GB).
 
 ## TREC-CAR
 You can download our [BERT Large trained on TREC-CAR here](https://drive.google.com/open?id=1fzcL2nzUJMUd0w4J5JIeASSrN4uHlSqP).
