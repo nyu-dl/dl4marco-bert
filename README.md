@@ -75,6 +75,7 @@ python run.py \
   --num_train_steps=400000 \
   --train_batch_size=32 \
   --eval_batch_size=32 \
+  --learning_rate=1e-6
 ```
 
 Training for 400k iterations takes approximately 70 hours on a TPU v2.
