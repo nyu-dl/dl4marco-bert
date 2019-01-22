@@ -73,6 +73,7 @@ python run.py \
   --do_train=True \
   --do_eval=True \
   --num_train_steps=400000 \
+  --num_warmup_steps=40000 \
   --train_batch_size=32 \
   --eval_batch_size=32 \
   --learning_rate=1e-6
