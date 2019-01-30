@@ -89,7 +89,7 @@ Here we describe how to reproduce our results on the [TREC-CAR](http://trec-car.
 
 TREC-CAR Test Set (Automatic Annotations) | MAP
 ----------------------------------------------------- | :------:
-BERT (this code)                                      | **34.6**
+BERT (this code)                                      | **33.5**
 BM25 [Anserini](https://github.com/castorini/Anserini/blob/master/docs/experiments-car17.md) | 15.6
 Co-PACRR (MacAvaney et al., 2017) (2017's Best Entry) | 14.8
 
