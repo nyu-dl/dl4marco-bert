@@ -6,7 +6,8 @@
 
 This repository contains the code to reproduce our entry to the [MSMARCO passage
 ranking task](http://www.msmarco.org/leaders.aspx), which was placed first with
-a large margin over the second place.
+a large margin over the second place. It also contain the code to reproduce our 
+results on the [TREC-CAR dataset](http://trec-car.cs.unh.edu/).
 
 MSMARCO Passage Re-Ranking Leaderboard (Jan 8th 2019) | Eval MRR@10  | Eval MRR@10
 ------------------------------------- | :------: | :------:
@@ -97,7 +98,7 @@ Co-PACRR (MacAvaney et al., 2017) (2017's Best Entry) | 14.8
 
 The next steps (Indexing, Retrieval, and TFRecord conversion) take many hours.
 Alternatively, you can skip them and download 
-[the necessary files for training and evaluation here](https://drive.google.com/open?id=16tk7HmLaqvU0oIO5L_H8elwqKn2cJUzG)(~4.0GB), namely:
+[the necessary files for training and evaluation here](https://drive.google.com/open?id=16tk7HmLaqvU0oIO5L_H8elwqKn2cJUzG) (~4.0GB), namely:
 - queries (*.topics);
 - query-relevant passage pairs (*.qrels);
 - query-candidate passage pairs (*.run).
@@ -158,7 +159,7 @@ You should see a message like this after it finishes:
 2019-01-15 20:26:28,742 INFO  [main] index.IndexCollection (IndexCollection.java:578) - Total 29,794,689 documents indexed in 03:20:35
 ```
 
-###Retrieving pairs of query-candidate document
+### Retrieving pairs of query-candidate document
 We now retrieve candidate documents for each query using the BM25 algorithm.
 But first, we need to convert the TREC-CAR files to a format that Anserini can 
 consume.
