@@ -17,8 +17,8 @@ FLAGS = flags.FLAGS
 
 
 flags.DEFINE_string(
-    "tfrecord_folder", None,
-    "Folder where the tfrecord files will be writen.")
+    "output_folder", None,
+    "Folder where the tfrecord files will be written.")
 
 flags.DEFINE_string(
     "vocab_file",
@@ -138,10 +138,10 @@ def convert_eval_dataset(set_name, tokenizer):
           'Not all queries have {} docs'.format(FLAGS.num_eval_docs))
 
   writer = tf.python_io.TFRecordWriter(
-      FLAGS.tfrecord_folder + '/dataset_' + set_name + '.tf')
+      FLAGS.output_folder + '/dataset_' + set_name + '.tf')
 
   query_doc_ids_path = (
-      FLAGS.tfrecord_folder + '/query_doc_ids_' + set_name + '.txt')
+      FLAGS.output_folder + '/query_doc_ids_' + set_name + '.txt')
   with open(query_doc_ids_path, 'w') as ids_file:
     for i, (query, doc_ids_docs) in enumerate(queries_docs.items()):
       doc_ids, docs, labels = zip(*doc_ids_docs)
@@ -176,7 +176,7 @@ def convert_train_dataset(tokenizer):
   num_lines = sum(1 for line in open(FLAGS.train_dataset_path, 'r'))
   print('{} examples found.'.format(num_lines))
   writer = tf.python_io.TFRecordWriter(
-      FLAGS.tfrecord_folder + '/dataset_train.tf')
+      FLAGS.output_folder + '/dataset_train.tf')
 
   with open(FLAGS.train_dataset_path, 'r') as f:
     for i, line in enumerate(f):
@@ -205,8 +205,8 @@ def main():
   tokenizer = tokenization.FullTokenizer(
       vocab_file=FLAGS.vocab_file, do_lower_case=True)
 
-  if not os.path.exists(FLAGS.tfrecord_folder):
-    os.mkdir(FLAGS.tfrecord_folder)
+  if not os.path.exists(FLAGS.output_folder):
+    os.mkdir(FLAGS.output_folder)
 
   convert_train_dataset(tokenizer=tokenizer)
   convert_eval_dataset(set_name='dev', tokenizer=tokenizer)

@@ -1,2 +1,4 @@
-tensorflow >= 1.11.0   # CPU Version of TensorFlow.
+tensorflow >= 1.11.0  # CPU Version of TensorFlow.
 # tensorflow-gpu  >= 1.11.0  # GPU version of TensorFlow.
+cbor >= 0.1.4  # For TREC-CAR only.
+typing  # For TREC-CAR only.
