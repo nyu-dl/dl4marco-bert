@@ -15,6 +15,13 @@ MSMARCO Passage Re-Ranking Leaderboard (Jan 8th 2019) | Eval MRR@10  | Eval MRR@
 2nd Place - IRNet                     | 28.06     | 27.80
 3rd Place - Conv-KNRM                 | 27.12     | 29.02
 
+TREC-CAR Test Set (Automatic Annotations) | MAP
+----------------------------------------------------- | :------:
+BERT (this code)                                      | **33.5**
+BM25 [Anserini](https://github.com/castorini/Anserini/blob/master/docs/experiments-car17.md) | 15.6
+Co-PACRR (MacAvaney et al., 2017) (2017's Best Entry) | 14.8
+
+
 The paper describing our implementation is [here](https://arxiv.org/abs/1901.04085).
 
 ## Download and extract the data
@@ -85,13 +92,7 @@ Alternatively, you can [download the trained model used in our submission here](
 
 ## TREC-CAR
 
-Here we describe how to reproduce our results on the [TREC-CAR](http://trec-car.cs.unh.edu/) dataset, which is ~22 MAP points higher than the best entry from 2017 and a well-tuned BM25:
-
-TREC-CAR Test Set (Automatic Annotations) | MAP
------------------------------------------------------ | :------:
-BERT (this code)                                      | **33.5**
-BM25 [Anserini](https://github.com/castorini/Anserini/blob/master/docs/experiments-car17.md) | 15.6
-Co-PACRR (MacAvaney et al., 2017) (2017's Best Entry) | 14.8
+Here we describe how to reproduce our results on the [TREC-CAR](http://trec-car.cs.unh.edu/) dataset.
 
 
 ### Downloading qrels, run and TFRecord files
