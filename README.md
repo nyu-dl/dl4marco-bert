@@ -6,7 +6,7 @@
 
 This repository contains the code to reproduce our entry to the [MSMARCO passage
 ranking task](http://www.msmarco.org/leaders.aspx), which was placed first with
-a large margin over the second place. It also contain the code to reproduce our 
+a large margin over the second place. It also contains the code to reproduce our 
 result on the [TREC-CAR dataset](http://trec-car.cs.unh.edu/), which is ~22 MAP 
 points higher than the best entry from 2017 and a well-tuned BM25.
 
