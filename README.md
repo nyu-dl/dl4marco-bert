@@ -20,7 +20,7 @@ TREC-CAR Test Set (Automatic Annotations) | MAP
 ----------------------------------------------------- | :------:
 BERT (this code)                                      | **33.5**
 BM25 [Anserini](https://github.com/castorini/Anserini/blob/master/docs/experiments-car17.md) | 15.6
-Co-PACRR (MacAvaney et al., 2017) (2017's Best Entry) | 14.8
+[MacAvaney et al., 2017](https://trec.nist.gov/pubs/trec26/papers/MPIID5-CAR.pdf) (TREC-CAR 2017 Best Entry) | 14.8
 
 The paper describing our implementation is [here](https://arxiv.org/abs/1901.04085).
 
