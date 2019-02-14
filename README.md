@@ -145,7 +145,7 @@ git clone https://github.com/castorini/Anserini.git
 cd Anserini
 mvn clean package appassembler:assemble
 tar xvfz eval/trec_eval.9.0.4.tar.gz -C eval/ && cd eval/trec_eval.9.0.4 && make
-cd ndeval && make
+cd ../ndeval && make
 ```
 
 Now we can index the corpus (.cbor files):
