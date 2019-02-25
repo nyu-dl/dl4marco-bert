@@ -167,7 +167,7 @@ But first, we need to convert the TREC-CAR files to a format that Anserini can
 consume.
 
 First, we merge qrels folds 0, 1, 2, and 3 into a single file for training. 
-Fold 4 will be as the dev set.
+Fold 4 will be the dev set.
 ```
 for f in ${TRECCAR_DIR}/train/fold-[0-3]-base.train.cbor-hierarchical.qrels; do (cat "${f}"; echo); done >${TRECCAR_DIR}/train.qrels
 cp ${TRECCAR_DIR}/train/fold-[0-3]-base.train.cbor-hierarchical.qrels ${TRECCAR_DIR}/dev.qrels
