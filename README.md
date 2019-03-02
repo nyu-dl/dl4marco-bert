@@ -170,7 +170,7 @@ First, we merge qrels folds 0, 1, 2, and 3 into a single file for training.
 Fold 4 will be the dev set.
 ```
 for f in ${TRECCAR_DIR}/train/fold-[0-3]-base.train.cbor-hierarchical.qrels; do (cat "${f}"; echo); done >${TRECCAR_DIR}/train.qrels
-cp ${TRECCAR_DIR}/train/fold-[0-3]-base.train.cbor-hierarchical.qrels ${TRECCAR_DIR}/dev.qrels
+cp ${TRECCAR_DIR}/train/fold-4-base.train.cbor-hierarchical.qrels ${TRECCAR_DIR}/dev.qrels
 cp ${TRECCAR_DIR}/benchmarkY1/benchmarkY1-test/test.pages.cbor-hierarchical.qrels ${TRECCAR_DIR}/test.qrels
 ```
 
@@ -190,9 +190,9 @@ sort -u -o ${TRECCAR_DIR}/test.topics ${TRECCAR_DIR}/test.topics
 
 We now retrieve the top-10 documents per query for training and development sets.
 ```
-nohup target/appassembler/bin/SearchCollection -topicreader Car -index lucene-index.car17.pos+docvectors+rawdocs -topics ${TRECCAR_DIR}/train.topics -output ${TRECCAR_DIR}/train.run -hits 10 -bm25 &
+nohup target/appassembler/bin/SearchCollection -topicreader Car -index ${TRECCAR_DIR}/lucene-index.car17.pos+docvectors+rawdocs -topics ${TRECCAR_DIR}/train.topics -output ${TRECCAR_DIR}/train.run -hits 10 -bm25 &
 
-nohup target/appassembler/bin/SearchCollection -topicreader Car -index lucene-index.car17.pos+docvectors+rawdocs -topics {TRECCAR_DIR}/dev.topics -output ${TRECCAR_DIR}/dev.run -hits 10 -bm25 &
+nohup target/appassembler/bin/SearchCollection -topicreader Car -index ${TRECCAR_DIR}/lucene-index.car17.pos+docvectors+rawdocs -topics ${TRECCAR_DIR}/dev.topics -output ${TRECCAR_DIR}/dev.run -hits 10 -bm25 &
 ```
 
 And we retrieve top-1,000 documents per query for the test set.
