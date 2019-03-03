@@ -242,7 +242,7 @@ TFRecord files that will be consumed by BERT.
 python convert_treccar_to_tfrecord.py \
   --output_folder=${TRECCAR_DIR}/tfrecord \
   --vocab_file=${DATA_DIR}/uncased_L-24_H-1024_A-16/vocab.txt \
-  --corpus=${TRECCAR_DIR}/paragraphCorpus.v2.0/dedup.articles-paragraphs.cbor \
+  --corpus=${TRECCAR_DIR}/paragraphCorpus/dedup.articles-paragraphs.cbor \
   --qrels_train=${TRECCAR_DIR}/train.qrels \
   --qrels_dev=${TRECCAR_DIR}/dev.qrels \
   --qrels_test=${TRECCAR_DIR}/test.qrels \
