@@ -144,7 +144,7 @@ def create_model(bert_config, is_training, input_ids, input_mask, segment_ids,
     per_example_loss = -tf.reduce_sum(one_hot_labels * log_probs, axis=-1)
     loss = tf.reduce_mean(per_example_loss)
 
-    return (loss, per_example_loss, logits)
+    return (loss, per_example_loss, log_probs)
 
 
 def model_fn_builder(bert_config, num_labels, init_checkpoint, learning_rate,
@@ -165,7 +165,7 @@ def model_fn_builder(bert_config, num_labels, init_checkpoint, learning_rate,
     label_ids = features["label_ids"]
 
     is_training = (mode == tf.estimator.ModeKeys.TRAIN)
-    (total_loss, per_example_loss, logits) = create_model(
+    (total_loss, per_example_loss, log_probs) = create_model(
         bert_config, is_training, input_ids, input_mask, segment_ids, label_ids,
         num_labels, use_one_hot_embeddings)
 
@@ -210,7 +210,7 @@ def model_fn_builder(bert_config, num_labels, init_checkpoint, learning_rate,
       output_spec = tf.contrib.tpu.TPUEstimatorSpec(
           mode=mode,
           predictions={
-              "logits": logits,
+              "log_probs": log_probs,
               "label_ids": label_ids,
           },
           scaffold_fn=scaffold_fn)
@@ -393,18 +393,18 @@ def main(_):
       example_idx = 0
       total_count = 0
       for item in result:
-        results.append((item["logits"], item["label_ids"]))
+        results.append((item["log_probs"], item["label_ids"]))
         if total_count % 10000 == 0:
           tf.logging.info("Read {} examples in {} secs".format(
               total_count, int(time.time() - start_time)))
 
         if len(results) == FLAGS.num_eval_docs:
 
-          logits, labels = zip(*results)
-          logits = np.stack(logits).reshape(-1, 2)
+          log_probs, labels = zip(*results)
+          log_probs = np.stack(log_probs).reshape(-1, 2)
           labels = np.stack(labels)
 
-          scores = logits[:, 1]
+          scores = log_probs[:, 1]
           pred_docs = scores.argsort()[::-1]
           gt = set(list(np.where(labels > 0)[0]))
 
