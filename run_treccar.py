@@ -157,7 +157,7 @@ def create_model(bert_config, is_training, input_ids, input_mask, segment_ids,
     per_example_loss = -tf.reduce_sum(one_hot_labels * log_probs, axis=-1)
     loss = tf.reduce_mean(per_example_loss)
 
-    return (loss, per_example_loss, logits)
+    return (loss, per_example_loss, log_probs)
 
 
 def model_fn_builder(bert_config, num_labels, init_checkpoint, learning_rate,
@@ -179,7 +179,7 @@ def model_fn_builder(bert_config, num_labels, init_checkpoint, learning_rate,
     len_gt_titles = features["len_gt_titles"]
 
     is_training = (mode == tf.estimator.ModeKeys.TRAIN)
-    (total_loss, per_example_loss, logits) = create_model(
+    (total_loss, per_example_loss, log_probs) = create_model(
         bert_config, is_training, input_ids, input_mask, segment_ids, label_ids,
         num_labels, use_one_hot_embeddings)
 
@@ -223,7 +223,7 @@ def model_fn_builder(bert_config, num_labels, init_checkpoint, learning_rate,
       output_spec = tf.contrib.tpu.TPUEstimatorSpec(
           mode=mode,
           predictions={
-              "logits": logits,
+              "log_probs": log_probs,
               "label_ids": label_ids,
               "len_gt_titles": len_gt_titles,
           },
@@ -443,18 +443,18 @@ def main(_):
       total_count = 0
       for item in result:
         results.append(
-            (item["logits"], item["label_ids"], item["len_gt_titles"]))
+            (item["log_probs"], item["label_ids"], item["len_gt_titles"]))
 
         if len(results) == num_eval_docs:
 
-          logits, labels, len_gt_titles = zip(*results)
-          logits = np.stack(logits).reshape(-1, 2)
+          log_probs, labels, len_gt_titles = zip(*results)
+          log_probs = np.stack(log_probs).reshape(-1, 2)
           labels = np.stack(labels)
           len_gt_titles = np.stack(len_gt_titles)
           assert len(set(list(len_gt_titles))) == 1, (
               "all ground truth lengths must be the same for a given query.")   
           
-          scores = logits[:, 1]
+          scores = log_probs[:, 1]
           pred_docs = scores.argsort()[::-1]
           
           gt = set(list(np.where(labels > 0)[0]))
