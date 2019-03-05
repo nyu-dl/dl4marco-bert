@@ -14,6 +14,7 @@ import os
 import re
 import tensorflow as tf
 import time
+# local modules
 import tokenization
 import trec_car_classes
 
