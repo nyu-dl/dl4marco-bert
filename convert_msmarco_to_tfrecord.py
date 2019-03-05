@@ -8,6 +8,7 @@ import os
 import re
 import tensorflow as tf
 import time
+# local module
 import tokenization
 
 
