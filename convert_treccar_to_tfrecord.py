@@ -5,8 +5,7 @@ The main necessary inputs are:
 - Pairs of Query-Relevant Paragraph (called qrels in TREC's nomenclature)
 - Pairs of Query-Candidate Paragraph (called run in TREC's nomenclature)
 
-The outputs are 3 TFRecord files, for training, dev and test. 
-To be compatible with MS MARCO training scripts, we call the "test" set as "eval".
+The outputs are 3 TFRecord files, for training, dev and test.
 """
 import collections
 import json
