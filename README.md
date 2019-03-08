@@ -10,7 +10,7 @@ a large margin over the second place. It also contains the code to reproduce our
 result on the [TREC-CAR dataset](http://trec-car.cs.unh.edu/), which is ~22 MAP 
 points higher than the best entry from 2017 and a well-tuned BM25.
 
-MSMARCO Passage Re-Ranking Leaderboard (Jan 8th 2019) | Eval MRR@10  | Eval MRR@10
+MSMARCO Passage Re-Ranking Leaderboard (Jan 8th 2019) | Eval MRR@10  | Dev MRR@10
 ------------------------------------- | :------: | :------:
 1st Place - BERT (this code)          | **35.87** | **36.53**
 2nd Place - IRNet                     | 28.06     | 27.80
