@@ -3,7 +3,6 @@ This code converts MS MARCO train, dev and eval tsv data into the tfrecord files
 that will be consumed by BERT.
 """
 import collections
-import csv
 import os
 import re
 import tensorflow as tf
