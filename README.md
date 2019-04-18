@@ -127,13 +127,13 @@ mkdir ${DATA_DIR}
 wget http://trec-car.cs.unh.edu/datareleases/v2.0/paragraphCorpus.v2.0.tar.xz -P ${TRECCAR_DIR}
 wget http://trec-car.cs.unh.edu/datareleases/v2.0/train.v2.0.tar.xz -P ${TRECCAR_DIR}
 wget http://trec-car.cs.unh.edu/datareleases/v2.0/benchmarkY1-test.v2.0.tar.xz -P ${TRECCAR_DIR}
-wget https://storage.googleapis.com/bert_models/2018_10_18/uncased_L-24_H-1024_A-16.zip -P ${DATA_DIR}
+wget https://storage.googleapis.com/bert_treccar_data/pretrained_models/BERT_Large_pretrained_on_TREC_CAR_training_set_1M_iterations.tar.gz -P ${DATA_DIR}
+
 
 tar -xf  ${TRECCAR_DIR}/paragraphCorpus.v2.0.tar.xz
 tar -xf  ${TRECCAR_DIR}/train.v2.0.tar.xz
 tar -xf  ${TRECCAR_DIR}/benchmarkY1-test.v2.0.tar.xz
-unzip ${DATA_DIR}/uncased_L-24_H-1024_A-16.zip -d ${DATA_DIR}
-
+tar -xzf ${DATA_DIR}/BERT_Large_pretrained_on_TREC_CAR_training_set_1M_iterations.tar.gz
 ```
 
 ### Indexing TREC-CAR 
@@ -271,7 +271,7 @@ training:
 python run_treccar.py \
   --data_dir=${TRECCAR_DIR}/tfrecord \
   --bert_config_file=${DATA_DIR}/uncased_L-24_H-1024_A-16/bert_config.json \
-  --init_checkpoint=/path_to_bert_pretrained_on_treccar/model.ckpt-1000000 \
+  --init_checkpoint=${DATA_DIR}/pretrained_models_exp898_model.ckpt-1000000 \
   --output_dir=${TRECCAR_DIR}/output \
   --trec_output=True \
   --do_train=True \
