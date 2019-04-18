@@ -1,4 +1,4 @@
-"""Code to train and eval a BERT passage re-ranker on the MS MARCO dataset."""
+"""Code to train and eval a BERT passage re-ranker on the TREC CAR dataset."""
 
 
 from __future__ import absolute_import
@@ -11,6 +11,7 @@ import time
 import numpy as np
 import tensorflow as tf
 
+# local modules
 import metrics
 import modeling
 import optimization

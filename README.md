@@ -121,13 +121,19 @@ If you decided to index, retrieve and convert to the TFRecord format, you first
 need to download and extract the TREC-CAR data:
 ```
 TRECCAR_DIR=./treccar/
+DATA_DIR=./data
+mkdir ${DATA_DIR}
+
 wget http://trec-car.cs.unh.edu/datareleases/v2.0/paragraphCorpus.v2.0.tar.xz -P ${TRECCAR_DIR}
 wget http://trec-car.cs.unh.edu/datareleases/v2.0/train.v2.0.tar.xz -P ${TRECCAR_DIR}
 wget http://trec-car.cs.unh.edu/datareleases/v2.0/benchmarkY1-test.v2.0.tar.xz -P ${TRECCAR_DIR}
+wget https://storage.googleapis.com/bert_models/2018_10_18/uncased_L-24_H-1024_A-16.zip -P ${DATA_DIR}
 
 tar -xf  ${TRECCAR_DIR}/paragraphCorpus.v2.0.tar.xz
 tar -xf  ${TRECCAR_DIR}/train.v2.0.tar.xz
 tar -xf  ${TRECCAR_DIR}/benchmarkY1-test.v2.0.tar.xz
+unzip ${DATA_DIR}/uncased_L-24_H-1024_A-16.zip -d ${DATA_DIR}
+
 ```
 
 ### Indexing TREC-CAR 
@@ -236,7 +242,7 @@ TFRecord files that will be consumed by BERT.
 python convert_treccar_to_tfrecord.py \
   --output_folder=${TRECCAR_DIR}/tfrecord \
   --vocab_file=${DATA_DIR}/uncased_L-24_H-1024_A-16/vocab.txt \
-  --corpus=${TRECCAR_DIR}/paragraphCorpus.v2.0/dedup.articles-paragraphs.cbor \
+  --corpus=${TRECCAR_DIR}/paragraphCorpus/dedup.articles-paragraphs.cbor \
   --qrels_train=${TRECCAR_DIR}/train.qrels \
   --qrels_dev=${TRECCAR_DIR}/dev.qrels \
   --qrels_test=${TRECCAR_DIR}/test.qrels \
