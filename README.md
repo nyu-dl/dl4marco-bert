@@ -92,6 +92,9 @@ python run_msmarco.py \
 Training for 400k iterations takes approximately 70 hours on a TPU v2.
 Alternatively, you can [download the trained model used in our submission here](https://drive.google.com/open?id=1crlASTMlsihALlkabAQP6JTYIZwC1Wm8) (~3.4GB).
 
+You can also [download a BERT Base model trained on MS MARCO here](https://drive.google.com/open?id=1cyUrhs7JaCJTTu-DjFUqP6Bs4f8a6JTX). This model leads to ~2 points lower MRR@10 (34.7), but it is faster to train and evaluate. It can also fit on a single 12GB GPU.
+
+
 ## TREC-CAR
 
 We describe in the next sections how to reproduce our results on the [TREC-CAR](http://trec-car.cs.unh.edu/) dataset.
