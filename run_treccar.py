@@ -75,7 +75,7 @@ flags.DEFINE_integer("num_dev_docs", 10,
                      "Number of docs per query in the dev files.")
 
 flags.DEFINE_integer(
-    "max_text_examples", None,
+    "max_test_examples", None,
     "Maximum number of test examples to be evaluated. If None, evaluate all "
     "examples in the test set.")
 
