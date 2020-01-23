@@ -32,6 +32,8 @@ File | Description | Size | MD5
 [BERT_Large_trained_on_MSMARCO.zip](https://drive.google.com/open?id=1crlASTMlsihALlkabAQP6JTYIZwC1Wm8) | BERT-large trained on MS MARCO | 3.4 GB | `2616f874cdabadafc55626035c8ff8e8`
 [BERT_Base_trained_on_MSMARCO.zip](https://drive.google.com/open?id=1cyUrhs7JaCJTTu-DjFUqP6Bs4f8a6JTX) | BERT-base trained on MS MARCO | 1.1 GB | `7a8c621e01c127b55dbe511812c34910`
 [MSMARCO_tfrecord.tar.gz](https://drive.google.com/open?id=1IHFMLOMf2WqeQ0TuZx_j3_sf1Z0fc2-6) | MS MARCO TF Records | 9.1 GB | `c15d80fe9a56a2fb54eb7d94e2cfa4ef`
+[BERT_Large_dev_run.tsv](https://drive.google.com/file/d/168BFaZyIaia1opBAZTI_CEH9XM8lHK63/view?usp=sharing) | BERT-large run dev set (~6980 queries x 1000 docs per query) | 121 MB | `bcbbe19bcb2549dea3f26168c2bc445b`
+[BERT_Large_test_run.tsv](https://drive.google.com/file/d/1vDcyTODQk48xpbbcJax9I_cBJRilBEVm/view?usp=sharing) | BERT-large run test set (~6836 queries x 1000 docs per query) | 119 MB | `9779903606e5b545f491132d8c2cf292`
 [BERT_Large_trained_on_TREC_CAR.tar.gz](https://drive.google.com/open?id=1fzcL2nzUJMUd0w4J5JIeASSrN4uHlSqP) | BERT-large trained on TREC-CAR | 3.4 GB | `8baedd876935093bfd2bdfa66f2279bc`
 [BERT_Large_pretrained_on_TREC_CAR...](https://storage.googleapis.com/bert_treccar_data/pretrained_models/BERT_Large_pretrained_on_TREC_CAR_training_set_1M_iterations.tar.gz) | BERT-large pretrained on TREC-CAR's training set for 1M iterations | 3.4 GB | `9c6f2f8dbf9825899ee460ee52423b84`
 [treccar_files.tar.gz](https://drive.google.com/open?id=16tk7HmLaqvU0oIO5L_H8elwqKn2cJUzG) | TREC-CAR queries, qrels, runs, and TF Records | 4.0 GB | `4e6b5580e0b2f2c709d76ac9c7e7f362`
