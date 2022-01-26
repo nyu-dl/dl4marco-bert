@@ -166,18 +166,18 @@ an excelent toolkit for information retrieval research.
 First, we need to install Maven, and clone and compile Anserini's repository:
 ```
 sudo apt-get install maven
-git clone https://github.com/castorini/Anserini.git
+git clone --recurse-submodules https://github.com/castorini/Anserini.git
 cd Anserini
 mvn clean package appassembler:assemble
-tar xvfz eval/trec_eval.9.0.4.tar.gz -C eval/ && cd eval/trec_eval.9.0.4 && make
+tar xvfz tools/eval/trec_eval.9.0.4.tar.gz -C tools/eval/ && cd tools/eval/trec_eval.9.0.4 && make
 cd ../ndeval && make
 ```
 
 Now we can index the corpus (.cbor files):
 ```
-sh target/appassembler/bin/IndexCollection -collection CarCollection \
--generator LuceneDocumentGenerator -threads 40 -input ${TRECCAR_DIR}/paragraphCorpus.v2.0 -index \
-${TRECCAR_DIR}/lucene-index.car17.pos+docvectors+rawdocs -storePositions -storeDocvectors \
+sh Anserini/target/appassembler/bin/IndexCollection -collection CarCollection \
+-generator DefaultLuceneDocumentGenerator -threads 40 -input ./paragraphCorpus.v2.0 -index \
+./lucene-index.car17.pos+docvectors+rawdocs -storePositions -storeDocvectors \
 -storeRawDocs
 ```
 
